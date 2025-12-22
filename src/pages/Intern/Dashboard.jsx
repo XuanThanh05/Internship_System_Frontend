@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import InternSidebar from '../../components/Layout/InternSidebar';
 import LatestNotificationsWidget from '../../components/Dashboard/LatestNotificationsWidget';
 import '../../styles/dashBoard.css';
-import avatar from "../../assets/avatar.png";
+// import avatar from "../../assets/avatar.png";
 import { AuthContext } from '../../context/AuthContext';
 import { getInternByUserId } from '../../api/internApi';
 import { getTodayAttendance, checkIn, checkOut } from '../../api/attendanceApi';
@@ -525,7 +525,7 @@ const Dashboard = () => {
           <div className="card mentor-card">
             <h4>Mentor & chương trình thực tập</h4>
             <div className="mentor-info">
-              <img src={avatar} alt="avatar" />
+{/*               <img src={avatar} alt="avatar" /> */}
               <div>
                 <p>
                   {programLoading
