@@ -1,6 +1,6 @@
 import axios from "axios";
-
-const API_URL_REPORTS = `${import.meta.env.VITE_API_BASE_URL}/api/reports`;
+import { ROOT_API } from "./rootApi";
+const API_URL_REPORTS = `${ROOT_API}/api/reports`;
 
 const reportApi = {
   getFinalEvaluationReportByProgram: async (token, programId, teamId) => {

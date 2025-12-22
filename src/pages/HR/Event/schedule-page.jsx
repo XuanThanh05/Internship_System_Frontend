@@ -8,7 +8,7 @@ import EventTooltip from "./EventTooltip"
 import EventModal from "./EventModal"
 import CreateEventModal from "./CreateEventModal"
 import { toast } from "react-toastify"
-
+import { ROOT_API } from "../../../api/rootApi";
 export default function SchedulePage() {
   const { token, user } = useContext(AuthContext)
   const [viewType, setViewType] = useState("calendar")
@@ -59,7 +59,7 @@ export default function SchedulePage() {
     const fetchPrograms = async () => {
       try {
         const res = await axios.get(
-          `${import.meta.env.VITE_API_BASE_URL}/api/programs?page=1&size=5&sortBy=name&sortDir=asc`,
+          `${ROOT_API}/api/programs?page=1&size=5&sortBy=name&sortDir=asc`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -78,7 +78,7 @@ export default function SchedulePage() {
     try {
       setLoading(true)
       const res = await axios.get(
-        `${import.meta.env.VITE_API_BASE_URL}/api/program-events/program/${selectedProgramId}`,
+        `${ROOT_API}/api/program-events/program/${selectedProgramId}`,
         { headers: { Authorization: `Bearer ${token}` } }
       )
 
@@ -111,7 +111,7 @@ export default function SchedulePage() {
   const handleCreateEvent = async (data) => {
     try {
       await axios.post(
-        `${import.meta.env.VITE_API_BASE_URL}/api/program-events`,
+        `${ROOT_API}/api/program-events`,
         {
           programId: selectedProgramId,
           ...data,
@@ -141,7 +141,7 @@ export default function SchedulePage() {
   const handleUpdateEvent = async (id, data) => {
     try {
       await axios.put(
-        `${import.meta.env.VITE_API_BASE_URL}/api/program-events/${id}`,
+        `${ROOT_API}/api/program-events/${id}`,
         {
           programId: selectedProgramId,
           ...data,
@@ -159,7 +159,7 @@ export default function SchedulePage() {
   const handleDeleteEvent = async (id) => {
     try {
       await axios.delete(
-        `${import.meta.env.VITE_API_BASE_URL}/api/program-events/${id}`,
+        `${ROOT_API}/api/program-events/${id}`,
         { headers: { Authorization: `Bearer ${token}` } }
       )
 

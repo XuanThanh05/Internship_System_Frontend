@@ -1,7 +1,7 @@
 import axios from "axios";
-
-const API_URL = `${import.meta.env.VITE_API_BASE_URL}/api/interns`;
-const CLOUDINARY_URL = `${import.meta.env.VITE_API_BASE_URL}/api/cloudinary`;
+import { ROOT_API } from "./rootApi";
+const API_URL = `${ROOT_API}/api/interns`;
+const CLOUDINARY_URL = `${ROOT_API}/api/cloudinary`;
 
 const authHeader = (token) => ({
   headers: { Authorization: `Bearer ${token}` },

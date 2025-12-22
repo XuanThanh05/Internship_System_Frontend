@@ -1,12 +1,12 @@
 import axios from "axios";
 import allowanceApi from "./allowanceApi.js";
-
-const API_URL = `${import.meta.env.VITE_API_BASE_URL}/api/hr/interns`;
-const API_URL_MENTOR_ASSIGN = `${import.meta.env.VITE_API_BASE_URL}/api/hr/mentor-assignments`;
-const API_URL_MENTOR = `${import.meta.env.VITE_API_BASE_URL}/api/mentors`;
-const API_URL_CONTRACTS = `${import.meta.env.VITE_API_BASE_URL}/api/hr/contracts`;
-const API_URL_PROGRAM = `${import.meta.env.VITE_API_BASE_URL}/api/programs`;
-const API_URL_TEAMS = `${import.meta.env.VITE_API_BASE_URL}/api/teams`;
+import { ROOT_API } from "./rootApi";
+const API_URL = `${ROOT_API}/api/hr/interns`;
+const API_URL_MENTOR_ASSIGN = `${ROOT_API}/api/hr/mentor-assignments`;
+const API_URL_MENTOR = `${ROOT_API}/api/mentors`;
+const API_URL_CONTRACTS = `${ROOT_API}/api/hr/contracts`;
+const API_URL_PROGRAM = `${ROOT_API}/api/programs`;
+const API_URL_TEAMS = `${ROOT_API}/api/teams`;
 
 const authHeader = (token) => ({
   headers: { Authorization: `Bearer ${token}` },

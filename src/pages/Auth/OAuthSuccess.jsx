@@ -4,7 +4,7 @@ import { AuthContext } from "../../context/AuthContext";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
-
+import { ROOT_API } from "../../api/rootApi";
 const OAuthSuccess = () => {
   const navigate = useNavigate();
   const { setUser, setToken, loading } = useContext(AuthContext);
@@ -41,7 +41,7 @@ const OAuthSuccess = () => {
         if (userData.role === "INTERN") {
           try {
             const internResponse = await axios.get(
-              `${import.meta.env.VITE_API_BASE_URL}/api/interns/user/${userData.userId}`,
+              `${ROOT_API}/api/interns/user/${userData.userId}`,
               { headers: { Authorization: `Bearer ${token}` } }
             );
 

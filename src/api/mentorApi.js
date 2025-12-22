@@ -1,6 +1,7 @@
 import axios from "axios";
+import { ROOT_API } from "./rootApi";
 
-const BASE_URL = `${import.meta.env.VITE_API_BASE_URL}`;
+const BASE_URL = ROOT_API;
 const API_URL = `${BASE_URL}/api/mentors`;
 
 const authHeader = (token) => ({

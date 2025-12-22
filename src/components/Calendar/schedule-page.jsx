@@ -5,7 +5,7 @@ import TimelineView from "./timeline-view"
 import WeekView from "./week-view"
 import { AuthContext } from "../../context/AuthContext"
 import axios from "axios"
-
+import { ROOT_API } from "../../api/rootApi";
 export default function SchedulePage() {
   const { token, user } = useContext(AuthContext)
   const [viewType, setViewType] = useState("calendar")
@@ -25,7 +25,7 @@ export default function SchedulePage() {
       try {
         const internId = user.internId
         const res = await axios.get(
-          `${import.meta.env.VITE_API_BASE_URL}/api/programs/intern/${internId}`,
+          `${ROOT_API}/api/programs/intern/${internId}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }

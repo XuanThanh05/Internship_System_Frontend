@@ -1,6 +1,6 @@
 import axios from "axios";
-
-const API_URL = `${import.meta.env.VITE_API_BASE_URL}/api/admin/ManageUsers`;
+import { ROOT_API } from "./rootApi";
+const API_URL = `${ROOT_API}/api/admin/ManageUsers`;
 
 // Tạo axios config có Bearer token
 const authHeader = (token) => ({

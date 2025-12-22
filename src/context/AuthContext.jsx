@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 import { authService } from "../services/authService";
 import axios from "axios";
-
+import { ROOT_API } from "../api/rootApi";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -126,7 +126,7 @@ export const AuthProvider = ({ children }) => {
       if (userData.role === "INTERN" && !userData.internId) {
         try {
           const internResponse = await axios.get(
-            `${import.meta.env.VITE_API_BASE_URL}/api/interns/user/${userData.userId}`,
+            `${ROOT_API}/api/interns/user/${userData.userId}`,
             { headers: { Authorization: `Bearer ${jwt}` } }
           );
           // Handle different response structures

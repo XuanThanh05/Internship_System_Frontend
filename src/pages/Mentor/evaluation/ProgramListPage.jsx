@@ -3,7 +3,7 @@ import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import styles from "./ProgramListPage.module.css";
 import { AuthContext } from "../../../context/AuthContext";
-
+import { ROOT_API } from "../../../api/rootApi";
 export default function ProgramListPage({ onSelectProgram }) {
   const { token, user } = useContext(AuthContext);
 
@@ -26,7 +26,7 @@ export default function ProgramListPage({ onSelectProgram }) {
         }
 
         const res = await axios.get(
-          `${import.meta.env.VITE_API_BASE_URL}/api/programs/mentor/${userId}/ongoing`,
+          `${ROOT_API}/api/programs/mentor/${userId}/ongoing`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }

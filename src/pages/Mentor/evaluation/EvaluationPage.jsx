@@ -4,7 +4,7 @@ import styles from "./EvaluationPage.module.css"
 import Modal from "./Modal"
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { ROOT_API } from "../../../api/rootApi";
 
 export default function EvaluationPage({ teamId, display_name, onBack }) {
   const { token, user } = useContext(AuthContext)
@@ -36,7 +36,7 @@ export default function EvaluationPage({ teamId, display_name, onBack }) {
   useEffect(() => {
     const fetchMentor = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/mentors/user/${user.userId}`, {
+        const res = await fetch(`${ROOT_API}/api/mentors/user/${user.userId}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         if (!res.ok) throw new Error("Không lấy được mentor");
@@ -51,7 +51,7 @@ export default function EvaluationPage({ teamId, display_name, onBack }) {
   useEffect(() => {
     const fetchTeam = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/evaluations/team/${teamId}`, {
+        const res = await fetch(`${ROOT_API}/api/evaluations/team/${teamId}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -123,7 +123,7 @@ export default function EvaluationPage({ teamId, display_name, onBack }) {
       if (!selectedIntern || !mentor) return;
 
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/evaluations`, {
+        const res = await fetch(`${ROOT_API}/api/evaluations`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -162,7 +162,7 @@ export default function EvaluationPage({ teamId, display_name, onBack }) {
         toast.success("Thêm đánh giá thành công!");
 
         // refresh team data
-        const refresh = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/evaluations/team/${teamId}`, {
+        const refresh = await fetch(`${ROOT_API}/api/evaluations/team/${teamId}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         const data = await refresh.json();
@@ -184,7 +184,7 @@ export default function EvaluationPage({ teamId, display_name, onBack }) {
   const handleDeleteEvaluation = async (evaluationId) => {
 
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/evaluations/${evaluationId}`, {
+      const res = await fetch(`${ROOT_API}/api/evaluations/${evaluationId}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` }
       })
@@ -192,7 +192,7 @@ export default function EvaluationPage({ teamId, display_name, onBack }) {
       if (!res.ok) throw new Error("Xóa thất bại")
 
       // refresh data
-      const refresh = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/evaluations/team/${teamId}`, {
+      const refresh = await fetch(`${ROOT_API}/api/evaluations/team/${teamId}`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       const data = await refresh.json()
@@ -209,7 +209,7 @@ export default function EvaluationPage({ teamId, display_name, onBack }) {
   }
   const handleUpdateEvaluation = async () => {
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/evaluations/${editEval.evaluation_id}`, {
+      const res = await fetch(`${ROOT_API}/api/evaluations/${editEval.evaluation_id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -238,7 +238,7 @@ export default function EvaluationPage({ teamId, display_name, onBack }) {
           throw new Error(errMessage);
         }
 
-      const refresh = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/evaluations/team/${teamId}`, {
+      const refresh = await fetch(`${ROOT_API}/api/evaluations/team/${teamId}`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       const data = await refresh.json()
@@ -273,7 +273,7 @@ export default function EvaluationPage({ teamId, display_name, onBack }) {
         }
 
         // 🔥 Nếu tất cả đều đã được đánh giá → gửi API
-        const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/notifications/evaluation-summary`, {
+        const res = await fetch(`${ROOT_API}/api/notifications/evaluation-summary`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -316,7 +316,7 @@ export default function EvaluationPage({ teamId, display_name, onBack }) {
         };
 
         const res = await fetch(
-          `${import.meta.env.VITE_API_BASE_URL}/api/notifications/evaluation-summary`,
+          `${ROOT_API}/api/notifications/evaluation-summary`,
           {
             method: "POST",
             headers: {

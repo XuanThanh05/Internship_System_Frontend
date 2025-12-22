@@ -1,9 +1,9 @@
 // src/services/authService.js
 import axios from "axios";
 import Cookies from "js-cookie";
-
-const BASE_URL_ADMIN = `${import.meta.env.VITE_API_BASE_URL}/api/admin/users`;
-const BASE_URL_AUTH = `${import.meta.env.VITE_API_BASE_URL}/api/auth`;
+import { ROOT_API } from "../api/rootApi";
+const BASE_URL_ADMIN = `${ROOT_API}/api/admin/users`;
+const BASE_URL_AUTH = `${ROOT_API}/api/auth`;
 
 export const authService = {
   // 🔹 Admin: create user manually (with token)

@@ -1,6 +1,6 @@
 import axios from "axios";
-
-const API_URL = `${import.meta.env.VITE_API_BASE_URL}/api/allowances`;
+import { ROOT_API } from "./rootApi";
+const API_URL = `${ROOT_API}/api/allowances`;
 
 const authHeader = (token) => ({
   headers: { Authorization: `Bearer ${token}` },

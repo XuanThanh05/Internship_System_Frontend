@@ -1,8 +1,8 @@
 // src/api/axiosClient.js
 import axios from "axios";
-
+import { ROOT_API } from "./rootApi";
 const axiosClient = axios.create({
-  baseURL: `${import.meta.env.VITE_API_BASE_URL}/api`,
+  baseURL: `${ROOT_API}/api`,
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",

@@ -3,7 +3,7 @@ import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import styles from "./TeamListPage.module.css";
 import { AuthContext } from "../../../context/AuthContext";
-
+import { ROOT_API } from "../../../api/rootApi";
 export default function TeamListPage({ programId, onSelectTeam, onBack }) {
   const { token } = useContext(AuthContext);
   const [teams, setTeams] = useState([]);
@@ -29,7 +29,7 @@ export default function TeamListPage({ programId, onSelectTeam, onBack }) {
           throw new Error("Thiếu programId để tải danh sách team.");
         }
         const res = await axios.get(
-          `${import.meta.env.VITE_API_BASE_URL}/api/teams/by-program/${programId}`,
+          `${ROOT_API}/api/teams/by-program/${programId}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         // API trả về:

@@ -1,6 +1,6 @@
 import axios from "axios";
-
-const BASE_URL = `${import.meta.env.VITE_API_BASE_URL}`;
+import { ROOT_API } from "./rootApi";
+const BASE_URL = `${ROOT_API}`;
 const API_URL = `${BASE_URL}/api/tags`;
 
 const authHeader = (token) => ({
