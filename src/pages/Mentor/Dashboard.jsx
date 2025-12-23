@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import MentorSidebar from "../../components/Layout/MentorSidebar";
 import TaskStats from "../../components/Dashboard/TaskStats";
 import "../../styles/dashBoard.css";
-import avatar from "../../assets/avatar.png";
+// import avatar from "../../assets/avatar.png";
 import { AuthContext } from "../../context/AuthContext";
 import mentorApi from "../../api/mentorApi";
 import hrApi from "../../api/hrApi";
@@ -173,7 +173,7 @@ const MentorDashboard = () => {
           <div className="card mentor-info-card">
             <h4>Thông tin mentor</h4>
             <div className="mentor-info">
-              <img src={avatar} alt="avatar" />
+{/*               <img src={avatar} alt="avatar" /> */}
               <div>
                 <p>{mentorInfo?.fullName || mentorInfo?.name || mentorInfo?.mentorName || user?.fullName || user?.username || "Mentor"}</p>
                 <p className="email">{mentorInfo?.email || user?.email || ""}</p>
